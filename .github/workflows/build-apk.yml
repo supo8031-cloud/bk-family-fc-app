@@ -32,15 +32,14 @@ jobs:
           mkdir app
           cd app
           npm init -y
-          
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npx cap init "BK Family Photo" "com.bkfamily.fc" --web-dir=www
+          mkdir www
+          cp ../index.html www/
+          if [ -f ../bk-family-logo.png ]; then cp ../bk-family-logo.png www/; fi
+          npx cap add android
+          npx cap sync android
 
-      npm install @capacitor/core @capacitor/cli @capacitor/android
-      npx cap init "BK Family Photo" "com.bkfamily.fc" --web-dir=www
-      mkdir www
-      cp ../index.html www/
-      if [ -f ../bk-family-logo.png ]; then cp ../bk-family-logo.png www/; fi
-      npx cap add android
-      npx cap sync android
 
       - name: Build APK
         run: |
