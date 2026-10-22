@@ -39,7 +39,7 @@ jobs:
           if [ -f ../bk-family-logo.png ]; then cp ../bk-family-logo.png www/; fi
           npx cap add android
           npx cap sync android
-
+          
 
       - name: Build APK
         run: |
