@@ -130,15 +130,32 @@
       admin: ["⚙️ Admin Dashboard", "Admin ခွင့်ပြုချက်နဲ့ စီမံခန့်ခွဲမှုစနစ်ကို နောက်အဆင့်မှာ တည်ဆောက်မယ်။"]
     };
 
-    function showPage(page) {
-      const item = pages[page];
-      document.getElementById("details").innerHTML =
-        "<h3>" + item[0] + "</h3><p>" + item[1] + "</p>";
-      document.getElementById("details").scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
-    }
+function showPage(page) {
+  const item = pages[page];
+  const details = document.getElementById("details");
+
+  if (page === "players") {
+    details.innerHTML = `
+      <h3>⚽ BK FAMILY FC Players</h3>
+      ${players.map(p => `
+        <div style="padding:12px;margin:8px 0;background:#263750;border-radius:10px">
+          <strong>#${p.number} - ${p.name}</strong><br>
+          Position: ${p.position}<br>
+          Goals: ${p.goals}
+        </div>
+      `).join("")}
+    `;
+  } else {
+    details.innerHTML =
+      "<h3>" + item[0] + "</h3><p>" + item[1] + "</p>";
+  }
+
+  details.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
   </script>
 </body>
 </html>
