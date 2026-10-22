@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>BK FAMILY FC</title>
+<style>
+:root{--bg:#101827;--panel:#1e2b40;--panel2:#263750;--gold:#f3ca63;--muted:#bdc8d8;--line:#35455e;--red:#ef6464}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Myanmar",sans-serif;background:var(--bg);color:#fff}
+header{text-align:center;padding:24px 14px 20px;background:linear-gradient(135deg,#17243a,#263b58);border-bottom:3px solid #e6b84c}
+.crest{width:94px;height:94px;border:3px solid var(--gold);border-radius:50%;margin:auto;display:grid;place-items:center;overflow:hidden;background:#101827;font-size:36px;color:var(--gold)}
+.crest img{width:100%;height:100%;object-fit:contain}h1{color:var(--gold);font-size:25px;margin:12px 0 4px}header p{color:#cbd5e1;margin:4px}
+main{max-width:900px;margin:auto;padding:16px}.welcome{color:var(--gold)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.card,section.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px}.card{padding:16px 8px;text-align:center;cursor:pointer}.card:active{transform:scale(.98)}.emoji{font-size:28px}.card h3{font-size:14px;margin:8px 0 4px}.card p{color:var(--muted);font-size:12px;margin:0}
+section.panel{padding:16px;margin-top:14px;line-height:1.65}h2,h3{margin-top:0}.gold{color:var(--gold)}.muted{color:var(--muted);font-size:13px}
+button,.button{border:0;border-radius:9px;padding:10px 13px;background:var(--gold);color:#172033;font-weight:700;cursor:pointer;font-size:14px}button.secondary{background:#35455e;color:#fff}button.danger{background:#8d333b;color:#fff}input,select,textarea{width:100%;padding:11px;border:1px solid #465873;border-radius:9px;background:#111d2e;color:#fff;margin:5px 0 12px;font:inherit}input[type=file]{padding:8px}label{font-size:13px;color:var(--muted)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.player,.photo{background:var(--panel2);padding:12px;border-radius:10px;margin:10px 0;border:1px solid var(--line)}.player strong{color:var(--gold)}.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{margin:0;padding:7px}.photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:7px}.photo p{font-size:12px;margin:6px 2px}.photo button{width:100%}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--panel2);padding:12px;border-radius:10px;text-align:center}.stat b{display:block;color:var(--gold);font-size:22px}footer{text-align:center;color:#aab6c8;padding:24px 10px;font-size:12px}
+.hidden{display:none!important}.notice{padding:10px;border-radius:8px;background:#203e36;color:#c9f7df;font-size:13px;margin:8px 0}.warning{background:#4b3720;color:#ffe2a7}.toprow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+@media(min-width:620px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photos{grid-template-columns:repeat(3,minmax(0,1fr))}.crest{width:105px;height:105px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="crest"><img id="teamLogo" alt="BK FAMILY FC Logo" class="hidden"><span id="logoFallback">⚽</span></div>
+  <h1>BK FAMILY FC</h1><p>ONE TEAM • ONE FAMILY</p>
+</header>
+<main>
+  <h2 class="welcome">Welcome to Our Club!</h2>
+  <p>အသင်းရဲ့ တရားဝင် Website / App မှ ကြိုဆိုပါတယ်။</p>
+  <div class="grid">
+    <div class="card" onclick="showPage('players')"><div class="emoji">👥</div><h3>Players</h3><p>ကစားသမားစာရင်း</p></div>
+    <div class="card" onclick="showPage('matches')"><div class="emoji">⚽</div><h3>Matches</h3><p>ပွဲစဉ်နှင့် ရလဒ်</p></div>
+    <div class="card" onclick="showPage('stats')"><div class="emoji">🏆</div><h3>Statistics</h3><p>ဂိုးနှင့် အချက်အလက်</p></div>
+    <div class="card" onclick="showPage('gallery')"><div class="emoji">📸</div><h3>Gallery</h3><p>ဓာတ်ပုံများ</p></div>
+    <div class="card" onclick="showPage('login')"><div class="emoji">🔐</div><h3>Team Login</h3><p>အသင်းသားဝင်ရန်</p></div>
+    <div class="card" onclick="showPage('admin')"><div class="emoji">⚙️</div><h3>Admin</h3><p>စီမံခန့်ခွဲမှု</p></div>
+  </div>
+  <section id="details" class="panel"><h3>⚽ BK FAMILY FC</h3>Menu တစ်ခုကို နှိပ်ပြီး ကြည့်ရှုနိုင်ပါတယ်။</section>
+</main>
+<footer>© BK FAMILY FC • Official Club App</footer>
+<script>
+const STORE={players:"bkfc_players_v2",photos:"bkfc_photos_v2",logo:"bkfc_logo_v2",matches:"bkfc_matches_v2",pin:"bkfc_admin_pin_v2"};
+const starterPlayers=[
+ {id:1,number:7,name:"Kyaw Htet Aung",position:"Forward",goals:0},
+ {id:2,number:10,name:"THU ZAW",position:"Forward",goals:0},
+ {id:3,number:5,name:"Kyaw Naing",position:"Defender",goals:0},
+ {id:4,number:18,name:"Zaw Moe Lwin",position:"Midfielder",goals:0}
+];
+function read(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function save(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){alert("ဖုန်း Browser ထဲ သိမ်းဆည်းရန် နေရာမလုံလောက်ပါ။ ဓာတ်ပုံအချို့ကို ဖျက်ပြီး ပြန်စမ်းပါ။");return false}}
+let players=read(STORE.players,starterPlayers),photos=read(STORE.photos,[]),matches=read(STORE.matches,[]),adminOn=false;
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function setLogo(src){const img=document.getElementById("teamLogo"),fb=document.getElementById("logoFallback");if(src){img.src=src;img.classList.remove("hidden");fb.classList.add("hidden")}else{img.removeAttribute("src");img.classList.add("hidden");fb.classList.remove("hidden")}}
+setLogo(read(STORE.logo,null));
+function showPage(page){
+ const d=document.getElementById("details");
+ if(page==="players")return renderPlayers();
+ if(page==="gallery")return renderGallery();
+ if(page==="admin")return renderAdmin();
+ if(page==="stats"){d.innerHTML=`<h3>🏆 Statistics</h3><div class="statgrid"><div class="stat"><b>${players.length}</b>ကစားသမား</div><div class="stat"><b>${players.reduce((s,p)=>s+(+p.goals||0),0)}</b>စုစုပေါင်းဂိုး</div><div class="stat"><b>${matches.length}</b>ပွဲမှတ်တမ်း</div></div>`;return d.scrollIntoView({behavior:"smooth",block:"nearest"})}
+ if(page==="matches"){renderMatches();return}
+ if(page==="login"){d.innerHTML=`<h3>🔐 Team Login</h3><p>အသင်းသားများအတွက် အသုံးပြုသူဝင်ရောက်မှုစနစ်ကို Online Backend ချိတ်ဆက်ပြီးမှ လုံခြုံစွာ အသုံးပြုနိုင်ပါမည်။</p><p class="muted">ယခု HTML ဗားရှင်းတွင် အသင်းသားအကောင့်များ မဖန်တီးရသေးပါ။</p>`;d.scrollIntoView({behavior:"smooth",block:"nearest"});return}
+}
+function renderPlayers(){
+ const d=document.getElementById("details");
+ d.innerHTML=`<div class="toprow"><h3>👥 ကစားသမားစာရင်း</h3><button onclick="showPlayerForm()">＋ ကစားသမားထည့်ရန်</button></div>
+ <p class="muted">အမည်၊ ကျောနံပါတ်၊ နေရာနှင့် သွင်းဂိုးများကို စီမံနိုင်သည်။</p>
+ ${players.length?players.map(p=>`<div class="player"><strong>#${esc(p.number)} — ${esc(p.name)}</strong><br>Position: ${esc(p.position)}<br>Goals: ${+p.goals||0}<div class="actions"><button class="secondary" onclick="editPlayer(${p.id})">ပြင်ရန်</button><button class="danger" onclick="deletePlayer(${p.id})">ဖျက်ရန်</button></div></div>`).join(""):"<p>ကစားသမားမရှိသေးပါ။</p>"}
+ <div id="playerForm"></div>`;
+ d.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function showPlayerForm(p={id:null,number:"",name:"",position:"Forward",goals:0}){
+ document.getElementById("playerForm").innerHTML=`<section class="panel"><h3>${p.id?"ကစားသမားအချက်အလက် ပြင်ရန်":"ကစားသမားအသစ်ထည့်ရန်"}</h3>
+ <form onsubmit="savePlayer(event,${p.id??"null"})"><div class="formgrid"><div><label>ကျောနံပါတ်</label><input name="number" type="number" min="0" max="99" value="${esc(p.number)}" required></div><div><label>သွင်းဂိုး</label><input name="goals" type="number" min="0" value="${esc(p.goals)}" required></div></div>
+ <label>ကစားသမားအမည်</label><input name="name" value="${esc(p.name)}" required>
+ <label>ကစားသည့်နေရာ</label><select name="position">${["Forward","Midfielder","Defender","Goalkeeper"].map(x=>`<option ${p.position===x?"selected":""}>${x}</option>`).join("")}</select>
+ <div class="actions"><button type="submit">သိမ်းမည်</button><button type="button" class="secondary" onclick="renderPlayers()">မလုပ်တော့ပါ</button></div></form></section>`;
+}
+function savePlayer(e,id){e.preventDefault();const f=e.target;const obj={id:id??Date.now(),number:+f.number.value,name:f.name.value.trim(),position:f.position.value,goals:+f.goals.value};if(id!==null&&id!==undefined)players=players.map(p=>p.id===id?obj:p);else players.push(obj);if(save(STORE.players,players))renderPlayers()}
+function editPlayer(id){const p=players.find(p=>p.id===id);if(p)showPlayerForm(p)}
+function deletePlayer(id){const p=players.find(p=>p.id===id);if(p&&confirm(p.name+" ကို ဖျက်မှာ သေချာပါသလား?")){players=players.filter(p=>p.id!==id);save(STORE.players,players);renderPlayers()}}
+function renderGallery(){
+ const d=document.getElementById("details");
+ d.innerHTML=`<div class="toprow"><h3>📸 အသင်းဓာတ်ပုံ Gallery</h3></div>
+ <p class="muted">ဓာတ်ပုံကို ရွေးပြီး တင်ပါ။ ဓာတ်ပုံများသည် ယခု Browser/ဖုန်းထဲတွင်သာ သိမ်းထားမည်။</p>
+ <label>ဓာတ်ပုံရွေးရန်</label><input id="photoFiles" type="file" accept="image/*" multiple>
+ <label>စာတန်း (ရွေးချယ်နိုင်သည်)</label><input id="photoCaption" placeholder="ဥပမာ - ပွဲနေ့အမှတ်တရ">
+ <button onclick="uploadPhotos()">ဓာတ်ပုံတင်မည်</button><div id="galleryNotice"></div><hr>
+ <div class="photos">${photos.map(p=>`<div class="photo"><img src="${p.src}" alt="${esc(p.caption)}"><p>${esc(p.caption||"BK FAMILY FC")}</p><button class="danger" onclick="deletePhoto(${p.id})">ဓာတ်ပုံဖျက်ရန်</button></div>`).join("")}</div>
+ ${photos.length?"":'<p class="muted">ဓာတ်ပုံ မတင်ရသေးပါ။</p>'}`;
+ d.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+async function uploadPhotos(){
+ const inp=document.getElementById("photoFiles"),caption=document.getElementById("photoCaption").value.trim(),notice=document.getElementById("galleryNotice");
+ if(!inp.files.length){notice.innerHTML='<p class="warning">ဓာတ်ပုံတစ်ပုံ အရင်ရွေးပါ။</p>';return}
+ for(const file of inp.files){if(!file.type.startsWith("image/"))continue;
+  try{const data=await compressImage(file);photos.unshift({id:Date.now()+Math.random(),caption:caption||file.name,src:data})}catch(e){}
+ }
+ if(save(STORE.photos,photos)){notice.innerHTML='<p class="notice">ဓာတ်ပုံများ သိမ်းပြီးပါပြီ။</p>';renderGallery()}
+}
+function compressImage(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=reject;reader.onload=()=>{const img=new Image();img.onerror=reject;img.onload=()=>{const max=1200,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.78))};img.src=reader.result};reader.readAsDataURL(file)})}
+function deletePhoto(id){if(confirm("ဒီဓာတ်ပုံကို ဖျက်မှာ သေချာပါသလား?")){photos=photos.filter(p=>p.id!==id);save(STORE.photos,photos);renderGallery()}}
+function renderMatches(){
+ const d=document.getElementById("details");d.innerHTML=`<h3>⚽ ပွဲစဉ်နှင့် ရလဒ်</h3><form onsubmit="saveMatch(event)"><div class="formgrid"><div><label>ပြိုင်ဘက်အသင်း</label><input name="opponent" required placeholder="ဥပမာ - Team A"></div><div><label>ရက်စွဲ</label><input name="date" type="date" required></div><div><label>BK FC ဂိုး</label><input name="us" type="number" min="0" value="0" required></div><div><label>ပြိုင်ဘက်ဂိုး</label><input name="them" type="number" min="0" value="0" required></div></div><button>ရလဒ်သိမ်းမည်</button></form><hr>${matches.map(m=>`<div class="player"><strong>${esc(m.date)} — BK FAMILY FC ${m.us} : ${m.them} ${esc(m.opponent)}</strong><div class="actions"><button class="danger" onclick="deleteMatch(${m.id})">ဖျက်ရန်</button></div></div>`).join("")||"<p>ပွဲမှတ်တမ်းမရှိသေးပါ။</p>"}`;d.scrollIntoView({behavior:"smooth",block:"nearest"})
+}
+function saveMatch(e){e.preventDefault();const f=e.target;matches.unshift({id:Date.now(),opponent:f.opponent.value.trim(),date:f.date.value,us:+f.us.value,them:+f.them.value});if(save(STORE.matches,matches))renderMatches()}
+function deleteMatch(id){if(confirm("ပွဲမှတ်တမ်းဖျက်မလား?")){matches=matches.filter(m=>m.id!==id);save(STORE.matches,matches);renderMatches()}}
+function renderAdmin(){
+ const d=document.getElementById("details");
+ if(!adminOn){d.innerHTML=`<h3>⚙️ Admin ဝင်ရန်</h3><p class="muted">ပထမအကြိမ် Demo PIN သည် 1234 ဖြစ်သည်။ ၎င်းသည် လုံခြုံသော Server Login မဟုတ်ပါ။</p><form onsubmit="adminLogin(event)"><label>Admin PIN</label><input name="pin" type="password" inputmode="numeric" required><button>ဝင်မည်</button></form>`}
+ else{d.innerHTML=`<div class="toprow"><h3>⚙️ Admin Dashboard</h3><button class="secondary" onclick="adminOn=false;renderAdmin()">ထွက်မည်</button></div><div class="statgrid"><div class="stat"><b>${players.length}</b>ကစားသမား</div><div class="stat"><b>${photos.length}</b>ဓာတ်ပုံ</div><div class="stat"><b>${matches.length}</b>ပွဲမှတ်တမ်း</div></div>
+ <section class="panel"><h3>🛡️ အသင်း Logo ပြောင်းရန်</h3><label>Logo ပုံရွေးရန်</label><input id="logoFile" type="file" accept="image/*"><div class="actions"><button onclick="uploadLogo()">Logo သိမ်းမည်</button><button class="secondary" onclick="removeLogo()">Logo ဖယ်မည်</button></div></section>
+ <section class="panel"><h3>🔑 Demo PIN ပြောင်းရန်</h3><form onsubmit="changePin(event)"><label>PIN အသစ် (အနည်းဆုံး 4 လုံး)</label><input name="pin" type="password" minlength="4" required><button>PIN ပြောင်းမည်</button></form></section>
+ <section class="panel"><h3>💾 Backup / Restore</h3><p class="muted">ဖုန်းပြောင်းမည် သို့မဟုတ် အချက်အလက်မပျောက်စေရန် Backup ဖိုင်ကို သိမ်းထားပါ။</p><div class="actions"><button onclick="exportBackup()">Backup ထုတ်မည်</button><label class="button">Backup ပြန်ထည့်ရန်<input type="file" accept="application/json,.json" onchange="importBackup(event)" style="display:none"></label></div><div class="actions"><button class="danger" onclick="resetAll()">Demo အချက်အလက်များ ပြန်စမည်</button></div></section>`}
+ d.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function adminLogin(e){e.preventDefault();const pin=read(STORE.pin,"1234");if(e.target.pin.value===pin){adminOn=true;renderAdmin()}else alert("PIN မှားနေပါတယ်။")}
+function changePin(e){e.preventDefault();if(save(STORE.pin,e.target.pin.value)){alert("PIN ပြောင်းပြီးပါပြီ။ သတိပြုရန် - ဒီ PIN သည် ဖုန်း Browser ထဲတွင်သာ အလုပ်လုပ်ပါသည်။");renderAdmin()}}
+function uploadLogo(){const f=document.getElementById("logoFile").files[0];if(!f){alert("Logo ပုံရွေးပါ။");return}compressImage(f).then(src=>{if(save(STORE.logo,src)){setLogo(src);alert("Logo ပြောင်းပြီးပါပြီ။")}})}
+function removeLogo(){if(confirm("Logo ဖယ်မလား?")){localStorage.removeItem(STORE.logo);setLogo(null)}}
+function exportBackup(){const data={players,photos,matches,logo:read(STORE.logo,null),version:2};const blob=new Blob([JSON.stringify(data)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="BK-FAMILY-FC-backup.json";a.click();URL.revokeObjectURL(a.href)}
+function importBackup(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const b=JSON.parse(r.result);if(!Array.isArray(b.players)||!Array.isArray(b.photos)||!Array.isArray(b.matches))throw Error();players=b.players;photos=b.photos;matches=b.matches;save(STORE.players,players);save(STORE.photos,photos);save(STORE.matches,matches);if(b.logo)save(STORE.logo,b.logo);setLogo(b.logo||null);alert("Backup ပြန်ထည့်ပြီးပါပြီ။");renderAdmin()}catch(err){alert("Backup ဖိုင် မမှန်ပါ။")}};r.readAsText(file)}
+function resetAll(){if(confirm("ကစားသမား၊ ဓာတ်ပုံ၊ ပွဲမှတ်တမ်းအားလုံးကို ဖျက်ပြီး မူလစာရင်းပြန်ထားမည်။ ဆက်လုပ်မလား?")){players=starterPlayers.map(p=>({...p}));photos=[];matches=[];save(STORE.players,players);save(STORE.photos,photos);save(STORE.matches,matches);localStorage.removeItem(STORE.logo);setLogo(null);renderAdmin()}}
+</script>
+</body>
+</html>
