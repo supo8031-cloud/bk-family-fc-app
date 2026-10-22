@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>BK FAMILY FC</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101827;
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 28px 16px;
+      background: linear-gradient(135deg, #17243a, #263b58);
+      border-bottom: 3px solid #e6b84c;
+    }
+    .crest {
+      width: 85px;
+      height: 85px;
+      border: 3px solid #e6b84c;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: auto;
+      font-size: 36px;
+    }
+    h1 { color: #f3ca63; font-size: 25px; }
+    header p { color: #cbd5e1; }
+    main { padding: 18px; }
+    .welcome { color: #f3ca63; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #1e2b40;
+      padding: 20px 12px;
+      border-radius: 14px;
+      border: 1px solid #35455e;
+      text-align: center;
+      cursor: pointer;
+    }
+    .emoji { font-size: 30px; }
+    .card h3 { font-size: 15px; }
+    .card p { color: #bdc8d8; font-size: 12px; }
+    #details {
+      margin-top: 20px;
+      padding: 16px;
+      background: #1e2b40;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+    footer {
+      text-align: center;
+      color: #aab6c8;
+      padding: 25px 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="crest">⚽</div>
+    <h1>BK FAMILY FC</h1>
+    <p>ONE TEAM • ONE FAMILY</p>
+  </header>
+
+  <main>
+    <h2 class="welcome">Welcome to Our Club!</h2>
+    <p>အသင်းရဲ့ တရားဝင် App မှ ကြိုဆိုပါတယ်။</p>
+
+    <div class="grid">
+      <div class="card" onclick="showPage('players')">
+        <div class="emoji">👥</div>
+        <h3>Players</h3>
+        <p>ကစားသမားစာရင်း</p>
+      </div>
+      <div class="card" onclick="showPage('matches')">
+        <div class="emoji">⚽</div>
+        <h3>Matches</h3>
+        <p>ပွဲစဉ်နှင့် ရလဒ်</p>
+      </div>
+      <div class="card" onclick="showPage('stats')">
+        <div class="emoji">🏆</div>
+        <h3>Statistics</h3>
+        <p>ဂိုးသွင်းနှင့် အမှတ်စာရင်း</p>
+      </div>
+      <div class="card" onclick="showPage('gallery')">
+        <div class="emoji">📸</div>
+        <h3>Gallery</h3>
+        <p>ဓာတ်ပုံနှင့် ဗီဒီယို</p>
+      </div>
+      <div class="card" onclick="showPage('login')">
+        <div class="emoji">🔐</div>
+        <h3>Team Login</h3>
+        <p>အသင်းသားဝင်ရန်</p>
+      </div>
+      <div class="card" onclick="showPage('admin')">
+        <div class="emoji">⚙️</div>
+        <h3>Admin</h3>
+        <p>စီမံခန့်ခွဲမှု</p>
+      </div>
+    </div>
+
+    <section id="details">
+      <h3>⚽ BK FAMILY FC</h3>
+      Menu တစ်ခုကို နှိပ်ပြီး ကြည့်ရှုနိုင်ပါတယ်။
+    </section>
+  </main>
+
+  <footer>
+    © BK FAMILY FC • Official Club App
+  </footer>
+
+  <script>
+    const pages = {
+      players: ["👥 ကစားသမားစာရင်း", "ကစားသမားအချက်အလက်များကို နောက်အဆင့်မှာ ထည့်မယ်။"],
+      matches: ["⚽ ပွဲစဉ်နှင့် ရလဒ်", "ပွဲစဉ်နဲ့ ရလဒ်မှတ်တမ်းများကို နောက်အဆင့်မှာ ထည့်မယ်။"],
+      stats: ["🏆 ဂိုးသွင်းနှင့် အမှတ်စာရင်း", "ကစားသမားစာရင်းနဲ့ အမှတ်ပေးဇယားကို နောက်အဆင့်မှာ ထည့်မယ်။"],
+      gallery: ["📸 Gallery", "ဓာတ်ပုံနဲ့ ဗီဒီယိုများကို နောက်အဆင့်မှာ ထည့်မယ်။"],
+      login: ["🔐 Team Login", "လုံခြုံတဲ့ Login စနစ်ကို နောက်အဆင့်မှာ တည်ဆောက်မယ်။"],
+      admin: ["⚙️ Admin Dashboard", "Admin ခွင့်ပြုချက်နဲ့ စီမံခန့်ခွဲမှုစနစ်ကို နောက်အဆင့်မှာ တည်ဆောက်မယ်။"]
+    };
+
+    function showPage(page) {
+      const item = pages[page];
+      document.getElementById("details").innerHTML =
+        "<h3>" + item[0] + "</h3><p>" + item[1] + "</p>";
+      document.getElementById("details").scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+  </script>
+</body>
+</html>
