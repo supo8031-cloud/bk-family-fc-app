@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BK Family Photo</string>
+    <string name="title_activity_main">BK Family Photo</string>
+    <string name="package_name">com.bkfamilyfc.photo</string>
+    <string name="custom_url_scheme">com.bkfamilyfc.photo</string>
+</resources>
