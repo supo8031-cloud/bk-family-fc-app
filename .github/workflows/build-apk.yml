@@ -41,11 +41,26 @@ jobs:
           npx cap sync android
           
 
+
       - name: Build APK
         run: |
           cd app/android
+          cat > fix-kotlin.gradle <<'EOF'
+          allprojects {
+            configurations.configureEach {
+              resolutionStrategy.eachDependency {
+                if (requested.group == 'org.jetbrains.kotlin' &&
+                    (requested.name == 'kotlin-stdlib-jdk7' ||
+                     requested.name == 'kotlin-stdlib-jdk8')) {
+                  useVersion '1.8.22'
+                }
+              }
+            }
+          }
+          EOF
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew -I fix-kotlin.gradle assembleDebug
+
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
